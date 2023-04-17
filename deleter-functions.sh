@@ -34,7 +34,7 @@ function check_number() {
   echo "$operator$time_option"
 }
 
-#Check if exclue file exist and is correctly formated and readable
+#Check if exclude file exist and is correctly formated and readable
 #Arguments:
 # $1 exclude_file
 function check_exclude_file() {
@@ -42,7 +42,7 @@ function check_exclude_file() {
   if [[ ! -e "$1" ]]; then
     echoerr "Exclude_file "$1" doesn't exist."
     return 1
-    # Check if file is readable
+  # Check if file is readable
   fi
   if [[ ! -r "$1" ]]; then
     echoerr "You don't have read privileges to open "$1"."

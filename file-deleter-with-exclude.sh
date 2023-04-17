@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#Purpose:      Delete files recursively from 'directory' with option to add exclude file and other options, display list of all files that will be deleter and prompt for confirmation.
+#Purpose:      Delete files recursively from 'directory' with option to add exclude file and other options, display list of all files that will be deleted and prompt for confirmation.
 #Author:       Damian Kuraś <https://github.com/DamianKuras>
 #Date:         April 16 2023
 #Release:      1.0.0
@@ -21,7 +21,7 @@ help_exclude_file() {
   echo "The exclude_file option allows you to specify a file that contains a list of patterns to exclude for deletion."
   echo "The file should contain one pattern per line, in the following format:"
   echo "  - A path to match files in a specific directory, e.g. '/path/to/mydir/*'"
-  echo "  - A glob pattern to match multiple files, e.g. '*.log'"
+  echo "  - A global pattern to match multiple files, e.g. '*.log'"
   echo "Patterns are matched using the 'find' command, so they must follow the same syntax as find's -path options."
   echo "To use the exclude_file option, specify the path to the file after the -e option, e.g.:"
   echo "  $0 -e /path/to/exclude.txt /path/to/directory"
@@ -104,7 +104,7 @@ fi
 #protect script from deleting itself
 find_command+=(-not -name $(basename "$0") -not -name "deleter-functions.sh")
 
-#protect script from deleting exclude_file if it exists
+#check exclude file and protect script from deleting exclude_file if it exists
 if [[ -n "$exclude_file" ]]; then
   #check exclude file
   check_exclude_file "$exclude_file"
